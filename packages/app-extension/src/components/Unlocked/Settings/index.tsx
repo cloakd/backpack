@@ -19,14 +19,14 @@ import {
   Settings,
 } from "@mui/icons-material";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import { IconButton,Typography } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 
 import { useNavigation } from "../../common/Layout/NavStack";
 import { RecentActivityButton } from "../../Unlocked/Balances/RecentActivity";
 import { NotificationButton } from "../Balances/Notifications";
 
 import { AvatarHeader } from "./AvatarHeader/AvatarHeader";
-import { AvatarPopoverButton } from "./AvatarPopover";
+import { AvatarPopoverButtonMenu } from "./AvatarPopover";
 
 export function SettingsButton() {
   return (
@@ -35,7 +35,7 @@ export function SettingsButton() {
       <RecentActivityButton />
       <NotificationButton />
       <div style={{ width: "16px" }} />
-      <AvatarPopoverButton />
+      <AvatarPopoverButtonMenu />
     </div>
   );
 }

@@ -40,7 +40,7 @@ const useStyles = styles((theme) => ({
   },
 }));
 
-export function AvatarPopoverButton({
+export function AvatarPopoverButtonMenu({
   buttonStyle,
   imgStyle,
 }: {
@@ -50,38 +50,18 @@ export function AvatarPopoverButton({
   const classes = useStyles();
   const theme = useCustomTheme();
   const [anchorEl, setAnchorEl] = useState<any | undefined>(undefined);
-  const avatarUrl = useAvatarUrl(32);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const { isXs } = useBreakpoints();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
-      }}
-    >
-      <IconButton
-        disableRipple
-        className={classes.menuButton}
-        style={{
-          ...buttonStyle,
-        }}
-        onClick={(e) => {
+    <>
+      <AvatarPopoverButton
+        buttonStyle={buttonStyle}
+        imgStyle={imgStyle}
+        onClick={(e: any) => {
           setAnchorEl(e.currentTarget);
         }}
-      >
-        <ProxyImage
-          src={avatarUrl}
-          style={{
-            width: "32px",
-            height: "32px",
-            borderRadius: "16px",
-            ...imgStyle,
-          }}
-        />
-      </IconButton>
+      />
       <Popover
         open={Boolean(anchorEl)}
         anchorEl={anchorEl}
@@ -118,6 +98,47 @@ export function AvatarPopoverButton({
         settingsOpen={settingsOpen}
         setSettingsOpen={setSettingsOpen}
       />
+    </>
+  );
+}
+
+export function AvatarPopoverButton({
+  buttonStyle,
+  onClick,
+  imgStyle,
+}: {
+  buttonStyle?: any;
+  onClick?: any;
+  imgStyle?: any;
+}) {
+  const classes = useStyles();
+  const avatarUrl = useAvatarUrl(32);
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
+      <IconButton
+        disableRipple
+        className={classes.menuButton}
+        style={{
+          ...buttonStyle,
+        }}
+        onClick={(e) => onClick && onClick(e)}
+      >
+        <ProxyImage
+          src={avatarUrl}
+          style={{
+            width: "32px",
+            height: "32px",
+            borderRadius: "16px",
+            ...imgStyle,
+          }}
+        />
+      </IconButton>
     </div>
   );
 }
