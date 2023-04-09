@@ -51,17 +51,17 @@ function _Unlocked() {
 function _UnlockedNewLayout() {
   return (
     <Tab.Navigator
-      initialRouteName="Wallet"
-      options={({ route }) => ({
+      initialRouteName="wallet"
+      options={({ route }: any) => ({
         tabBarIcon: ({ focused }: { focused: boolean }) => {
           switch (route.name) {
-            case "Wallet":
+            case "wallet":
               return <WalletTabIcon focused={focused} />;
-            case "Notifications":
+            case "notifications":
               return <NotificationsTabIcon focused={focused} />;
-            case "Chat":
+            case "messages":
               return <ChatTabIcon focused={focused} />;
-            case "Profile":
+            case "profile":
               return <ProfileTabIcon focused={focused} />;
             default:
               return <WalletTabIcon focused={focused} />;
@@ -71,10 +71,10 @@ function _UnlockedNewLayout() {
         tabBarInactiveTintColor: "",
       })}
     >
-      <Tab.Screen name="Wallet" component={WalletNavigator} />
-      <Tab.Screen name="Notifications" component={NotificationsNavigator} />
-      <Tab.Screen name="Chat" component={ChatNavigator} />
-      <Tab.Screen name="Profile" component={ProfileNavigator} />
+      <Tab.Screen name="wallet" component={WalletNavigator} />
+      <Tab.Screen name="notifications" component={NotificationsNavigator} />
+      <Tab.Screen name="messages" component={ChatNavigator} />
+      <Tab.Screen name="profile" component={ProfileNavigator} />
     </Tab.Navigator>
   );
 }
